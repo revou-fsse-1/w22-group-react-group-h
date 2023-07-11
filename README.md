@@ -7,27 +7,21 @@
 | Gary Cruise    | Lead Software Engineer |
 | Indra Setiadhi | Software Engineer      |
 
-## Base
+## Src
 ### Component
-- Layout.tsx
-- Alert.tsx
-- Nav.tsx
-- Spinner.tsx
-
-  <li> Pages
-    <ul>
-      <li>Layout.tsx</li>
-      <li>Alert.tsx</li>
-      <li>Nav.tsx</li>
-      <li>Spinner.tsx</li>
-    </ul>
-  </li>
-
-- Login (auth)
-- Register (auth)
-- Home (list of games)
+- Layout
+- Alert
+- Nav
+- Spinner
+### Pages
+- Login
+- Register
+- Homepage
 - Detail Game
-- Profile
+- Profile Page
+- Error Page
+### Styles
+- Global.css
 
 ## Flow
 
