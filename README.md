@@ -7,24 +7,29 @@
 | Gary Cruise    | Lead Software Engineer |
 | Indra Setiadhi | Software Engineer      |
 
-## Src
-### Component
+## Components
+
 - Layout
 - Alert
 - Nav
 - Spinner
-### Pages
+
+## Pages
+
 - Login
 - Register
-- Homepage
+- Home
 - Detail Game
-- Profile Page
+- Profile
 - Error Page
-### Styles
-- Global.css
 
-## Flow
+## App Flow
 
+![AppFlow](./assets/app-flow.png)
+
+## API
+
+https://apikgems.cobainweb.site/docs
 
 ## Getting Started
 
