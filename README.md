@@ -9,10 +9,10 @@
 
 ## Base
 ### Component
-      <li>Layout.tsx</li>
-      <li>Alert.tsx</li>
-      <li>Nav.tsx</li>
-      <li>Spinner.tsx</li>
+- Layout.tsx
+- Alert.tsx
+- Nav.tsx
+- Spinner.tsx
 
   <li> Pages
     <ul>
