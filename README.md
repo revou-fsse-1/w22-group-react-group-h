@@ -8,14 +8,12 @@
 | Indra Setiadhi | Software Engineer      |
 
 ## Base
- <li> Components
-    <ul>
+### Component
       <li>Layout.tsx</li>
       <li>Alert.tsx</li>
       <li>Nav.tsx</li>
       <li>Spinner.tsx</li>
-    </ul>
-  </li>
+
   <li> Pages
     <ul>
       <li>Layout.tsx</li>
