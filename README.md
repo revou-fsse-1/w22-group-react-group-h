@@ -7,6 +7,33 @@
 | Gary Cruise    | Lead Software Engineer |
 | Indra Setiadhi | Software Engineer      |
 
+## Base
+ <li> Components
+    <ul>
+      <li>Layout.tsx</li>
+      <li>Alert.tsx</li>
+      <li>Nav.tsx</li>
+      <li>Spinner.tsx</li>
+    </ul>
+  </li>
+  <li> Pages
+    <ul>
+      <li>Layout.tsx</li>
+      <li>Alert.tsx</li>
+      <li>Nav.tsx</li>
+      <li>Spinner.tsx</li>
+    </ul>
+  </li>
+
+- Login (auth)
+- Register (auth)
+- Home (list of games)
+- Detail Game
+- Profile
+
+## Flow
+
+
 ## Getting Started
 
 First, run the development server:
