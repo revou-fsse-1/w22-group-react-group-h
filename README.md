@@ -4,16 +4,8 @@
 
 | Name           | Role                   |
 | :------------- | :--------------------- |
-| Indra Setiadhi | Lead Software Engineer |
-| Gary Cruise    |    Software Engineer   |
-
-
-## Components
-
-- Layout
-- Alert
-- Nav
-- Spinner
+| Gary Cruise    | Lead Software Engineer |
+| Indra Setiadhi | Software Engineer      |
 
 ## Pages
 
@@ -22,7 +14,6 @@
 - Home
 - Detail Game
 - Profile
-- Error Page
 
 ## App Flow
 
