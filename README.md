@@ -4,8 +4,9 @@
 
 | Name           | Role                   |
 | :------------- | :--------------------- |
-| Gary Cruise    | Lead Software Engineer |
-| Indra Setiadhi | Software Engineer      |
+| Indra Setiadhi | Lead Software Engineer |
+| Gary Cruise    |    Software Engineer   |
+
 
 ## Components
 
