@@ -4,7 +4,6 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Permanent Marker', cursive;
   font-family: 'Poppins', sans-serif;
 }
 
