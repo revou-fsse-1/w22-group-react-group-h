@@ -56,7 +56,7 @@ export default function Register() {
   };
 
   return (
-    <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem] bg-[#1A5BB7]">
+    <section className="flex flex-col items-center -mt-11 pt-16 rounded-t-[2rem]">
       <div className="w-3/5 min-w-fit max-w-lg flex flex-col items-center gap-6 py-8 px-4 rounded-[2rem] bg-slate-50">
         <h2 className="text-4xl font-semibold">Sign Up</h2>
         <Formik

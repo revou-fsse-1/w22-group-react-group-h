@@ -97,7 +97,7 @@ export default function Login() {
 
         <div className="flex flex-col items-center">
           <p>Don&apos;t have an account?</p>
-          <Link href={'/signup'}>
+          <Link href={'/register'}>
             <span className="text-lg text-sky-600">Sign Up</span>
           </Link>
         </div>
