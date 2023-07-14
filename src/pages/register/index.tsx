@@ -33,19 +33,20 @@ export default function Register() {
   };
 
   const handleSubmit = async (values: InitialRegisterValues) => {
+    console.log('hello');
     try {
       const res = await axios.post(
         'https://apikgems.cobainweb.site/api/auth/register',
         {
+          name: values.name,
           username: values.username,
           email: values.email,
           password: values.password,
-          name: values.name,
         },
       );
       const data = res.data;
 
-      if (res.status !== 200) {
+      if (res.status !== 201) {
         throw new Error(data.errors);
       }
 
@@ -65,6 +66,23 @@ export default function Register() {
           onSubmit={(values) => handleSubmit(values)}
         >
           <Form className="w-4/5 flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
+              <label htmlFor="name" className="text-lg">
+                Name
+              </label>
+              <Field
+                name="name"
+                type="text"
+                placeholder="name"
+                className="px-3 py-2 rounded-lg border-2 border-gray-300"
+              />
+              <ErrorMessage
+                component="span"
+                name="name"
+                className="text-rose-600 text-sm"
+              />
+            </div>
+
             <div className="flex flex-col gap-1">
               <label htmlFor="username" className="text-lg">
                 Username

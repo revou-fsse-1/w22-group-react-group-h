@@ -5,7 +5,7 @@ export default function Header() {
         <header className="flex items-center justify-between pt-[40px] pb-[30px] px-0">
           <div>
             <h2 className="block text-[32px] font-semibold .no-underline text-white">
-              <a href="#">Apikgems</a>
+              <a href="#">ApikGems</a>
             </h2>
           </div>
 

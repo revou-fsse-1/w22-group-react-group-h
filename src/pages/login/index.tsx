@@ -5,7 +5,7 @@ import { object, string } from 'yup';
 import axios from 'axios';
 
 type InitialLoginValues = {
-  email: string;
+  username: string;
   password: string;
 };
 
@@ -13,13 +13,13 @@ export default function Login() {
   const router = useRouter();
 
   const loginSchema = object({
-    email: string().email('Invalid email').required('Email required'),
+    username: string().required('Username required'),
     password: string()
       .min(5, 'Password too short')
       .required('Password required'),
   });
 
-  const initialValues: InitialLoginValues = { email: '', password: '' };
+  const initialValues: InitialLoginValues = { username: '', password: '' };
 
   const handleSubmit = async (values: InitialLoginValues) => {
     try {
@@ -29,11 +29,11 @@ export default function Login() {
       );
       const data = res.data;
 
-      if (res.status !== 200) {
+      if (res.status !== 201) {
         throw new Error(data.errors);
       }
 
-      localStorage.setItem('token', data.data.token);
+      localStorage.setItem('token', data.accessToken);
       router.push('/');
     } catch (error: any) {
       console.log(error.toString());
@@ -42,6 +42,14 @@ export default function Login() {
 
   return (
     <section className="flex flex-col items-center">
+      <Link href={'/homepage'}>
+        <div className="text-lg text-sky-600">
+          <h2 className="block text-[32px] font-semibold .no-underline text-white my-[32px]">
+            ApikGems
+          </h2>
+        </div>
+      </Link>
+
       <div className="w-3/5 min-w-fit max-w-lg flex flex-col items-center gap-6 py-8 px-4 rounded-[2rem] bg-slate-50">
         <h2 className="text-4xl font-semibold">Login</h2>
         <Formik
@@ -51,18 +59,18 @@ export default function Login() {
         >
           <Form className="w-4/5 flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <label htmlFor="email" className="text-lg">
-                E-mail
+              <label htmlFor="username" className="text-lg">
+                Username
               </label>
               <Field
-                name="email"
-                type="email"
-                placeholder="myemail@gmail.com"
+                name="username"
+                type="username"
+                placeholder="username"
                 className="px-3 py-2 rounded-lg border-2 border-gray-300"
               />
               <ErrorMessage
                 component="span"
-                name="email"
+                name="username"
                 className="text-rose-600 text-sm"
               />
             </div>

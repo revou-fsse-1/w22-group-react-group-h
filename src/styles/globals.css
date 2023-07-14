@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 * {
   font-family: 'Permanent Marker', cursive;
   font-family: 'Poppins', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  background: radial-gradient(#a1c2f1, 20%, #5a96e3);
 }

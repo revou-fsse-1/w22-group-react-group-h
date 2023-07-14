@@ -1,10 +1,10 @@
 .layout-header {
-  background-color: blue;
+  background-color: transparent;
   color: white;
 }
 
 .layout-footer {
-  background-color: blue;
+  background-color: transparent;
   color: white;
   padding: 20px;
 }
