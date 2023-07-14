@@ -58,3 +58,97 @@ nav ul li.btn:hover a {
   background: white;
   transition: 0.4s;
 }
+
+.hero {
+  width: 1400px;
+  max-width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  padding-top: 140px;
+}
+
+.content .main-text {
+  position: relative;
+  z-index: 2;
+}
+
+.content .main-text h6 {
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.content .main-text h1 {
+  font-size: 100px;
+  line-height: 1;
+  color: white;
+  margin: 0px 0px 45px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.content .main-text h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+.content .main-text p {
+  max-width: 100%;
+  width: 480px;
+  color: white;
+  line-height: 1.8;
+  font-size: 15px;
+  margin-bottom: 50px;
+}
+
+.content .main-text a {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  background: white;
+  border: 1px solid white;
+  padding: 9px 25px;
+  line-height: 1.4;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.content .main-text a:hover {
+  transform: scale(1.2);
+  border: 1px solid #f5dca8;
+  background: transparent;
+  color: white;
+  transition: 0.4s;
+}
+
+.content .main-text a.yutub {
+  border: 1px solid #f5dca8;
+  color: white;
+  background: transparent;
+  margin-left: 20px;
+}
+
+.content .main-text a.yutub:hover {
+  color: black;
+  background: white;
+  border: 1px solid white;
+  transition: 0.4s;
+}
+
+.fortnitewrap {
+  position: absolute;
+  width: 55%;
+  height: 85%;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+}
+
+.fortnitewrap .fortniteimg {
+  height: 100;
+}

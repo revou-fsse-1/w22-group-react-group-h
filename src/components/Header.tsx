@@ -1,27 +1,32 @@
+import Link from 'next/link';
+import { useState } from 'react';
+
 export default function Header() {
+  const [isLogin, setisLogin] = useState(false);
+
   return (
     <div className="layout-header">
-      <div className="w-[1400px] max-w-[95%] mx-auto">
+      <div className="hero">
         <header className="flex items-center justify-between pt-[40px] pb-[30px] px-0">
           <div>
             <h2 className="block text-[32px] font-semibold .no-underline text-white">
-              <a href="#">ApikGems</a>
+              <Link href="/">ApikGems</Link>
             </h2>
           </div>
 
           <nav>
             <ul>
               <li>
-                <a href="#">Apikgems</a>
+                <a href="#">Games</a>
               </li>
               <li>
-                <a href="#">Apikgems</a>
+                <a href="#">Community</a>
               </li>
               <li>
-                <a href="#">Apikgems</a>
+                <a href="#">Event</a>
               </li>
               <li className="mr-[150px]">
-                <a href="#">Apikgems</a>
+                <a href="#">Chat</a>
               </li>
               <li className="btn">
                 <a href="#">Profile</a>
