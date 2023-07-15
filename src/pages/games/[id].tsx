@@ -16,24 +16,36 @@ export default function ({
         <title>Games | Apikgems </title>
       </Head>
 
-      <div>
-        <h1>{data.name}</h1>
-        <p>{`$ ${data.price}`}</p>
-
-        <div className="flex flex-row">
-          {data.genre.map((genre: string) => (
-            <div key={genre} className="bg-gray-300 border-red rounded-md">
-              <p>{genre}</p>
-            </div>
-          ))}
+      <div className="flex flex-col items-center my-16 gap-8">
+        <div className="flex flex-col gap-6">
+          <h1 className="text-5xl">{data.name}</h1>
+          <img
+            className="w-[48rem] h-auto"
+            src={data.imageUrl}
+            alt={`Photo of ${data.name}`}
+            onError={(e) => (e.currentTarget.src = '/avatar.svg')}
+          />
         </div>
 
-        <img
-          className="w-32 h-auto"
-          src={data.imageUrl}
-          alt={`Photo of ${data.name}`}
-          onError={(e) => (e.currentTarget.src = '/avatar.svg')}
-        />
+        <div className="flex justify-between w-[48rem]">
+          <div className="flex flex-row gap-6">
+            <p>test</p>
+            {data.genre.map((genre: string) => (
+              <div
+                key={genre}
+                className="bg-gray-300 border-red rounded-md px-2 py-1"
+              >
+                <p>{genre}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-row gap-8 items-center">
+            <p className="text-3xl">{`$ ${data.price}`}</p>
+            <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              Purchase
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -18,19 +18,21 @@ export default function MyProfile({
       </div>
 
       <div>
-        <h1>Games Owned</h1>
+        <h1>Games Owned: {data.games.length}</h1>
+        <h1>List Games:</h1>
       </div>
     </>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  //const token = window.localStorage.getItem('token');
   try {
     const response = await axios.get(
       'https://apikgems.cobainweb.site/api/users/me',
       {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbGllb3dpdHgwMDAycGQwamU5a2hiNmh3IiwiaWF0IjoxNjg5MTMxNzg2LCJleHAiOjE2ODkxMzUzODZ9.C0K4_YfsaV8B7JOKdbAwc860nyNpZWwyxvAJlBp1n9Q`,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbGllb3dpdHgwMDAycGQwamU5a2hiNmh3IiwiaWF0IjoxNjg5NDAwOTU4LCJleHAiOjE2ODk0MDQ1NTh9.yZXsY5UvRWOaKoGlcfXks5cUofa9MT1zhLMHvCj5mtg`,
         },
       },
     );
