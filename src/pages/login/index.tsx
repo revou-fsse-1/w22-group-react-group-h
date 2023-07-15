@@ -42,14 +42,6 @@ export default function Login() {
 
   return (
     <section className="flex flex-col items-center">
-      <Link href={'/homepage'}>
-        <div className="text-lg text-sky-600">
-          <h2 className="block text-[32px] font-semibold .no-underline text-white my-[32px]">
-            ApikGems
-          </h2>
-        </div>
-      </Link>
-
       <div className="w-3/5 min-w-fit max-w-lg flex flex-col items-center gap-6 py-8 px-4 rounded-[2rem] bg-slate-50">
         <h2 className="text-4xl font-semibold">Login</h2>
         <Formik
