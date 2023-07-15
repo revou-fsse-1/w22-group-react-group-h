@@ -1,8 +1,10 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
   const [isLogin, setisLogin] = useState(false);
+
+  // useEffect data.accessToken setisLogin
 
   return (
     <div className="layout-header">
@@ -17,10 +19,10 @@ export default function Header() {
           <nav>
             <ul>
               <li>
-                <a href="#">Games</a>
+                <Link href="/games">Games</Link>
               </li>
               <li>
-                <a href="#">Community</a>
+                <Link href="/community">Community</Link>
               </li>
               <li>
                 <a href="#">Event</a>
@@ -29,7 +31,11 @@ export default function Header() {
                 <a href="#">Chat</a>
               </li>
               <li className="btn">
-                <a href="#">Profile</a>
+                {isLogin ? (
+                  <Link href="#">Profile</Link>
+                ) : (
+                  <Link href="/login">Login</Link>
+                )}
               </li>
             </ul>
           </nav>
