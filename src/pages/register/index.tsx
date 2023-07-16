@@ -33,7 +33,6 @@ export default function Register() {
   };
 
   const handleSubmit = async (values: InitialRegisterValues) => {
-    console.log('hello');
     try {
       const res = await axios.post(
         'https://apikgems.cobainweb.site/api/auth/register',

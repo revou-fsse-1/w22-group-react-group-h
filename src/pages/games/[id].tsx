@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (
     );
 
     const data = response.data;
-    console.log(data);
+
     return {
       props: { data },
     };
