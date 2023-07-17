@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 export default function Header() {
   const [isLogin, setisLogin] = useState(false);
 
-  // useEffect data.accessToken setisLogin
+  // useEffect data.accessToken setisLogin ngambil di local token
 
   return (
     <div className="layout-header">
@@ -21,13 +21,13 @@ export default function Header() {
               <li>
                 <Link href="/games">Games</Link>
               </li>
-              <li>
+              <li className="ml-14">
                 <Link href="/community">Community</Link>
               </li>
-              <li>
+              <li className="ml-14">
                 <a href="#">Event</a>
               </li>
-              <li className="mr-[150px]">
+              <li className="mr-[150px] ml-14">
                 <a href="#">Chat</a>
               </li>
               <li className="btn">

@@ -11,18 +11,14 @@ export type GameCardsProps = {
 export function GameCards(props: GameCardsProps) {
   return (
     <Link href={`/games/${props.id}`}>
-      <div className="border">
+      <div className="border shadow-xl shadow-black">
         <div className="max-w-xs text-white rounded">
-          <img
-            className="w-full"
-            src={props.imageUrl}
-            alt="GamesImg"
-            height={45}
-            width={45}
-          ></img>
-          <div className="flex justify-between px-3 py-1 bg-blue-700 items-center">
-            <p className="text-l font-bold border px-2 py-1">{props.name}</p>
-            <p className="text-lg font-bold">{props.price}</p>
+          <img className="w-72 h-40" src={props.imageUrl} alt="GamesImg"></img>
+          <div className="flex justify-between px-3 py-1 items-center bg-gradient-to-r from-stone-500 to-stone-800">
+            <p className="px-3 pt-3 pb-3 truncate rounded-2xl bg-gradient-to-b from-slate-950">
+              {props.name}
+            </p>
+            <p className="text-lg font-bold">${props.price}</p>
           </div>
         </div>
       </div>
