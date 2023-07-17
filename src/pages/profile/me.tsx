@@ -4,6 +4,7 @@ import axios from 'axios';
 import useSWR from 'swr';
 import { OwnedGameCard } from '@/components/OwnedGameCard';
 import { OwnedGameCardProps } from '@/components/OwnedGameCard';
+import Image from 'next/image';
 
 export default function MyProfile() {
   const { data, error, isLoading } = useSWR(
@@ -23,16 +24,28 @@ export default function MyProfile() {
         <title>Profile | Apikgems </title>
       </Head>
 
-      <div className="flex flex-col items-center gap-8">
-        <h1>Profile</h1>
-        <p>{data.username}</p>
-        <p>{data.name}</p>
+      <div className="flex flex-col gap-12 hero">
+        <div className="flex flex-row w-full gap-8">
+          <Image
+            src="/profile-picture.jpg"
+            alt="profile picture"
+            height={240}
+            width={240}
+          ></Image>
+          <div>
+            <p className="text-3xl">{data.username}</p>
+            <p>{data.name}</p>
+            <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              Edit Profile
+            </button>
+          </div>
+        </div>
 
         <div>
           <h1>Games Owned: {data.games.length}</h1>
           <div>
             <h1>List Games:</h1>
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-8 items-center">
               {data.games.map((game: OwnedGameCardProps) => (
                 <OwnedGameCard
                   key={game.id}
