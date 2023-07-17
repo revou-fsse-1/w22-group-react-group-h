@@ -5,11 +5,43 @@ import {
 } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import axios from 'axios';
+import { useProfile } from '@/hooks/useProfile';
+import { GameCardsProps } from '@/components/GameCards';
 
 export default function ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  console.log('gem', data);
+  const router = useRouter();
+
+  async function purchaseButton() {
+    try {
+      await axios.post(
+        `https://apikgems.cobainweb.site/api/users/me/games`,
+        {
+          gameId: data.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      );
+      alert('Payment success!');
+      router.push('/profile/me');
+    } catch (error: any) {
+      alert(`Updating failed: ${error.message}`);
+      console.error('Error updating data:', error.message);
+    }
+  }
+
+  const { profile, isLoading, isError } = useProfile();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Head>
@@ -38,12 +70,22 @@ export default function ({
               </div>
             ))}
           </div>
-          <div className="flex flex-row gap-8 items-center">
-            <p className="text-3xl">{`$ ${data.price}`}</p>
-            <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-              Purchase
-            </button>
-          </div>
+          {!isError &&
+          profile.games.some((game: GameCardsProps) => game.id === data.id) ? (
+            <div>
+              <p className="text-3xl">You already have this game</p>
+            </div>
+          ) : (
+            <div className="flex flex-row gap-8 items-center">
+              <p className="text-3xl">{`$ ${data.price}`}</p>
+              <button
+                className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                onClick={purchaseButton}
+              >
+                Purchase
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </>
