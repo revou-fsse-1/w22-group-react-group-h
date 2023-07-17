@@ -33,17 +33,23 @@ export default function GameTables() {
   }, []);
 
   return (
-    <Link href="/">
-      <div className="flex flex-col hero cards">
-        {games.map((game) => (
-          <GameCards
-            key={game.id}
-            id={game.id}
-            imageUrl={game.imageUrl}
-            price={game.price}
-          />
-        ))}
+    <div className="flex flex-col hero mt-4">
+      <div>
+        <p>Featured & Recommended</p>
       </div>
-    </Link>
+      <Link href="/">
+        <div>
+          {games.map((game) => (
+            <GameCards
+              key={game.id}
+              id={game.id}
+              imageUrl={game.imageUrl}
+              price={game.price}
+              name={game.name}
+            />
+          ))}
+        </div>
+      </Link>
+    </div>
   );
 }
