@@ -20,7 +20,7 @@ export default function MyProfile() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  console.log('kustom_huk', profile);
+
   return (
     <>
       <Head>

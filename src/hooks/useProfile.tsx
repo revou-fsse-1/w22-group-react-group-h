@@ -6,6 +6,7 @@ export function useProfile() {
     'https://apikgems.cobainweb.site/api/users/me',
     fetcher,
   );
+  console.log('AAAKHH');
 
   return {
     profile: data,
