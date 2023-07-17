@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useProfile } from '@/hooks/useProfile';
+import Image from 'next/image';
 
 export default function Header() {
-  const [isLogin, setisLogin] = useState(false);
+  // const [isLogin, setisLogin] = useState(false);
 
   // useEffect data.accessToken setisLogin ngambil di local token
+
+  const { profile, isLoading, isError } = useProfile();
 
   return (
     <div className="layout-header">
@@ -30,13 +34,26 @@ export default function Header() {
               <li className="mr-[150px] ml-14">
                 <a href="#">Chat</a>
               </li>
-              <li className="btn">
-                {isLogin ? (
-                  <Link href="#">Profile</Link>
-                ) : (
+
+              {profile ? (
+                <li>
+                  <Link href="/profile/me">
+                    <div className="flex flex-col items-center">
+                      <Image
+                        src="/profile-picture.jpg"
+                        alt="profile picture"
+                        height={24}
+                        width={24}
+                      ></Image>
+                      <p>{profile.username}</p>
+                    </div>
+                  </Link>
+                </li>
+              ) : (
+                <li className="btn">
                   <Link href="/login">Login</Link>
-                )}
-              </li>
+                </li>
+              )}
             </ul>
           </nav>
         </header>
