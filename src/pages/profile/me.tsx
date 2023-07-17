@@ -2,6 +2,8 @@
 import Head from 'next/head';
 import axios from 'axios';
 import useSWR from 'swr';
+import { OwnedGameCard } from '@/components/OwnedGameCard';
+import { OwnedGameCardProps } from '@/components/OwnedGameCard';
 
 export default function MyProfile() {
   const { data, error, isLoading } = useSWR(
@@ -11,7 +13,7 @@ export default function MyProfile() {
   if (error) {
     return <div>Error fetching data</div>;
   }
-
+  console.log(data);
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -21,15 +23,27 @@ export default function MyProfile() {
         <title>Profile | Apikgems </title>
       </Head>
 
-      <div>
+      <div className="flex flex-col items-center gap-8">
         <h1>Profile</h1>
         <p>{data.username}</p>
         <p>{data.name}</p>
-      </div>
 
-      <div>
-        <h1>Games Owned: {data.games.length}</h1>
-        <h1>List Games:</h1>
+        <div>
+          <h1>Games Owned: {data.games.length}</h1>
+          <div>
+            <h1>List Games:</h1>
+            <div className="flex flex-row gap-4">
+              {data.games.map((game: OwnedGameCardProps) => (
+                <OwnedGameCard
+                  key={game.id}
+                  id={game.id}
+                  name={game.name}
+                  imageUrl={game.imageUrl}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

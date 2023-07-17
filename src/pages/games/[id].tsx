@@ -27,9 +27,8 @@ export default function ({
           />
         </div>
 
-        <div className="flex justify-between w-[48rem]">
+        <div className="flex justify-between w-[48rem] items-start">
           <div className="flex flex-row gap-6">
-            <p>test</p>
             {data.genre.map((genre: string) => (
               <div
                 key={genre}
@@ -59,11 +58,6 @@ export const getServerSideProps: GetServerSideProps = async (
   try {
     const response = await axios.get(
       `https://apikgems.cobainweb.site/api/games/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbGllb3dpdHgwMDAycGQwamU5a2hiNmh3IiwiaWF0IjoxNjg5MTMxNzg2LCJleHAiOjE2ODkxMzUzODZ9.C0K4_YfsaV8B7JOKdbAwc860nyNpZWwyxvAJlBp1n9Q`,
-        },
-      },
     );
 
     const data = response.data;
