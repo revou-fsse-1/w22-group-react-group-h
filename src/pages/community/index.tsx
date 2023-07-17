@@ -29,15 +29,17 @@ export default function GameTables() {
 
   return (
     <Link href="/">
-      <div className="flex flex-col hero cards">
-        {users.map((user) => (
-          <UserCards
-            key={user.id}
-            id={user.id}
-            // imageUrl={user.imageUrl}
-            username={user.username}
-          />
-        ))}
+      <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero">
+        <div className="pt-6 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-evenly">
+          {users.map((user) => (
+            <UserCards
+              key={user.id}
+              id={user.id}
+              // imageUrl={user.imageUrl}
+              username={user.username}
+            />
+          ))}
+        </div>
       </div>
     </Link>
   );
