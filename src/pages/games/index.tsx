@@ -45,12 +45,12 @@ export default function GameTables() {
   return (
     <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero">
       <div className="pb-8">
-        <p>Featured & Recommended</p>
-        <p>image</p>
+        <p className="pb-2 text-white">Featured & Recommended</p>
+        <img src="/Doraemon.jpg" className="pb-4"></img>
       </div>
       <GameSearchBar setFilterValue={handleFilterChange} />
       <Link href="/">
-        <div className="pt-10 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-evenly">
+        <div className="pt-6 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-evenly">
           {filteredGames.map((game) => (
             <GameCards
               key={game.id}

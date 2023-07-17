@@ -11,7 +11,7 @@ export type GameCardsProps = {
 export function GameCards(props: GameCardsProps) {
   return (
     <Link href={`/games/${props.id}`}>
-      <div className="border shadow-xl shadow-black">
+      <div className="border shadow-xl shadow-black hover:scale-110 duration-300">
         <div className="max-w-xs text-white rounded">
           <img className="w-72 h-40" src={props.imageUrl} alt="GamesImg"></img>
           <div className="flex justify-between px-3 py-1 items-center bg-gradient-to-r from-stone-500 to-stone-800">

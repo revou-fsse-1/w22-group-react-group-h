@@ -4,7 +4,12 @@ import { useEffect, useState } from 'react';
 export default function Header() {
   const [isLogin, setisLogin] = useState(false);
 
-  // useEffect data.accessToken setisLogin ngambil di local token
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setisLogin(true);
+    }
+  }, []);
 
   return (
     <div className="layout-header">
