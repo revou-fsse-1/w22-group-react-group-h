@@ -109,7 +109,7 @@ export default function ChatTables() {
                 name="chat"
                 type="text"
                 placeholder="chat"
-                className="px-3 py-2 rounded-lg border-2 border-gray-300"
+                className="px-3 py-2 rounded-lg border-2 border-gray-300 w-[800px]"
               />
             </div>
           </Form>
