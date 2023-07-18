@@ -1,5 +1,6 @@
 //import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import useSWR from 'swr';
 import { OwnedGameCard } from '@/components/OwnedGameCard';
@@ -7,70 +8,38 @@ import { OwnedGameCardProps } from '@/components/OwnedGameCard';
 import Image from 'next/image';
 import { useProfile } from '@/hooks/useProfile';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+
+interface IFormInput {
+  username: String;
+  name: String;
+  email: String;
+}
+
+async function fetcher(url: string) {
+  const response = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+
+  return response.data;
+}
 
 export default function MyProfile() {
-  // const { data, error, isLoading } = useSWR(
-  //   'https://apikgems.cobainweb.site/api/users/me',
-  //   fetcher,
-  // );
-  const { profile, isLoading, isError } = useProfile();
-  const [amount, setAmount] = useState(0);
+  const { data, error, isLoading } = useSWR(
+    'https://apikgems.cobainweb.site/api/users/me',
+    fetcher,
+  );
 
-  if (isError) {
+  const router = useRouter();
+  // const [amount, setAmount] = useState(0);
+
+  if (error) {
     return <div>Error fetching data</div>;
   }
   if (isLoading) {
     return <div>Loading...</div>;
-  }
-
-  const handleTopUp = (value: number) => {
-    setAmount(amount + value);
-  };
-
-  const handlePurchase = (gameId, price) => {
-    if (amount >= price) {
-      try {
-        axios.post(
-          `https://apikgems.cobainweb.site/api/users/me/games`,
-          {
-            gameId: gameId,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-          },
-        );
-        alert('Payment success!');
-        setAmount(amount - price);
-      } catch (error) {
-        alert(`Updating failed: ${error.message}`);
-        console.error('Error updating data:', error.message);
-      }
-    } else {
-      alert('Insufficient balance!');
-    }
-  };
-
-  async function purchaseButton() {
-    try {
-      await axios.post(
-        `https://apikgems.cobainweb.site/api/users/me/games`,
-        {
-          gameId: data.id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        },
-      );
-      alert('Payment success!');
-      router.push('/profile/me');
-    } catch (error: any) {
-      alert(`Updating failed: ${error.message}`);
-      console.error('Error updating data:', error.message);
-    }
   }
 
   return (
@@ -88,8 +57,8 @@ export default function MyProfile() {
             width={240}
           ></Image>
           <div>
-            <p className=" text-3xl font-medium">{profile.username}</p>
-            <p className=" pb-24 text-m">{profile.name}</p>
+            <p className=" text-3xl font-medium">{data.username}</p>
+            <p className=" pb-24 text-m">{data.name}</p>
             <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
               Edit Profile
             </button>
@@ -97,9 +66,9 @@ export default function MyProfile() {
         </div>
 
         <div className="pt-5 flex flex-col">
-          <h1 className="text-white">Games Owned: {profile.games.length}</h1>
+          <h1 className="text-white">Games Owned: {data.games.length}</h1>
           <div className="pt-3 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-between">
-            {profile.games.map((game: OwnedGameCardProps) => (
+            {data.games.map((game: OwnedGameCardProps) => (
               <OwnedGameCard
                 key={game.id}
                 id={game.id}
@@ -113,16 +82,6 @@ export default function MyProfile() {
     </>
   );
 }
-
-// async function fetcher(url: string) {
-//   const response = await axios.get(url, {
-//     headers: {
-//       Authorization: `Bearer ${localStorage.getItem('token')}`,
-//     },
-//   });
-
-//   return response.data;
-// }
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 //   //const token = window.localStorage.getItem('token');

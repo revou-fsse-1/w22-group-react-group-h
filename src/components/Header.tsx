@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useProfile } from '@/hooks/useProfile';
 import Image from 'next/image';
+import axios from 'axios';
 
 export default function Header() {
   // const [isLogin, setisLogin] = useState(false);
@@ -13,7 +14,39 @@ export default function Header() {
   //   }
   // }, []);
 
-  const { profile, isLoading, isError } = useProfile();
+  const [profile, setProfile] = useState({
+    id: '',
+    username: '',
+  });
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const response = await axios.get(
+          'https://apikgems.cobainweb.site/api/users/me',
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          },
+        );
+        console.log('sdhaushdusiah', response.data);
+        const user = response.data;
+        // const fetchedUsername = user.username;
+        setProfile({
+          id: user.id,
+          username: user.username,
+        });
+        // localStorage.setItem('username', fetchedUsername);
+      } catch (error) {
+        // Handle error
+      }
+    };
+
+    fetchUsername();
+  }, []);
+
+  //const { profile, isLoading, isError } = useProfile();
 
   return (
     <div className="layout-header">
