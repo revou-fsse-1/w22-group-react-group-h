@@ -79,8 +79,8 @@ export default function MyProfile() {
         <title>Profile | Apikgems </title>
       </Head>
 
-      <div className="flex flex-col gap-12 hero">
-        <div className="flex flex-row w-full gap-8">
+      <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
+        <div className="flex w-full gap-8">
           <Image
             src="/profile-picture.jpg"
             alt="profile picture"
@@ -88,28 +88,25 @@ export default function MyProfile() {
             width={240}
           ></Image>
           <div>
-            <p className="text-3xl">{profile.username}</p>
-            <p>{profile.name}</p>
+            <p className=" text-3xl font-medium">{profile.username}</p>
+            <p className=" pb-24 text-m">{profile.name}</p>
             <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
               Edit Profile
             </button>
           </div>
         </div>
 
-        <div>
-          <h1>Games Owned: {profile.games.length}</h1>
-          <div>
-            <h1>List Games:</h1>
-            <div className="flex flex-row gap-8 items-center">
-              {profile.games.map((game: OwnedGameCardProps) => (
-                <OwnedGameCard
-                  key={game.id}
-                  id={game.id}
-                  name={game.name}
-                  imageUrl={game.imageUrl}
-                />
-              ))}
-            </div>
+        <div className="pt-5 flex flex-col">
+          <h1 className="text-white">Games Owned: {profile.games.length}</h1>
+          <div className="pt-3 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-between">
+            {profile.games.map((game: OwnedGameCardProps) => (
+              <OwnedGameCard
+                key={game.id}
+                id={game.id}
+                name={game.name}
+                imageUrl={game.imageUrl}
+              />
+            ))}
           </div>
         </div>
       </div>
