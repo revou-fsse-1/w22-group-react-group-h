@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useProfile } from '@/hooks/useProfile';
 import { GameCardsProps } from '@/components/GameCards';
 
-export default function ({
+export default function GameDetail({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   console.log('gem', data);
