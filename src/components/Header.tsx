@@ -6,12 +6,12 @@ import Image from 'next/image';
 export default function Header() {
   // const [isLogin, setisLogin] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setisLogin(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //     setisLogin(true);
+  //   }
+  // }, []);
 
   const { profile, isLoading, isError } = useProfile();
 

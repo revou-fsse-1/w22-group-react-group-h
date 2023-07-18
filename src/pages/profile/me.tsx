@@ -6,6 +6,7 @@ import { OwnedGameCard } from '@/components/OwnedGameCard';
 import { OwnedGameCardProps } from '@/components/OwnedGameCard';
 import Image from 'next/image';
 import { useProfile } from '@/hooks/useProfile';
+import { useState } from 'react';
 
 export default function MyProfile() {
   // const { data, error, isLoading } = useSWR(
@@ -13,12 +14,63 @@ export default function MyProfile() {
   //   fetcher,
   // );
   const { profile, isLoading, isError } = useProfile();
+  const [amount, setAmount] = useState(0);
 
   if (isError) {
     return <div>Error fetching data</div>;
   }
   if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  const handleTopUp = (value: number) => {
+    setAmount(amount + value);
+  };
+
+  const handlePurchase = (gameId, price) => {
+    if (amount >= price) {
+      try {
+        axios.post(
+          `https://apikgems.cobainweb.site/api/users/me/games`,
+          {
+            gameId: gameId,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          },
+        );
+        alert('Payment success!');
+        setAmount(amount - price);
+      } catch (error) {
+        alert(`Updating failed: ${error.message}`);
+        console.error('Error updating data:', error.message);
+      }
+    } else {
+      alert('Insufficient balance!');
+    }
+  };
+
+  async function purchaseButton() {
+    try {
+      await axios.post(
+        `https://apikgems.cobainweb.site/api/users/me/games`,
+        {
+          gameId: data.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      );
+      alert('Payment success!');
+      router.push('/profile/me');
+    } catch (error: any) {
+      alert(`Updating failed: ${error.message}`);
+      console.error('Error updating data:', error.message);
+    }
   }
 
   return (
