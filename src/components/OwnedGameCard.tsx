@@ -9,15 +9,15 @@ export type OwnedGameCardProps = {
 
 export function OwnedGameCard(props: OwnedGameCardProps) {
   return (
-    <div>
+    <div className="border border-white shadow-black shadow-lg ">
       <img
-        className="w-80 h-96 border border-gray-300/10 mb-2"
+        className="w-72 h-40 "
         src={props.imageUrl}
         alt={`Image of game ${props.name}`}
       ></img>
-      <div className="flex flex-row gap-8 justify-between items-center my-2">
-        <div className="text-2xl font-normal">{props.name}</div>
-        <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+      <div className="flex flex-row justify-between items-center bg-gradient-to-r from-stone-500 to-stone-800 py-3 px-3">
+        <div className="text-m font-medium text-white">{props.name}</div>
+        <button className="shadow-md shadow-black rounded-md border border-transparent bg-indigo-600 px-6 py-2 font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
           Play
         </button>
       </div>

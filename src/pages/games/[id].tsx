@@ -42,50 +42,57 @@ export default function GameDetail({
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   return (
     <>
       <Head>
         <title>Games | Apikgems </title>
       </Head>
 
-      <div className="flex flex-col items-center my-16 gap-8">
-        <div className="flex flex-col gap-6">
-          <h1 className="text-5xl">{data.name}</h1>
-          <img
-            className="w-[48rem] h-auto"
-            src={data.imageUrl}
-            alt={`Photo of ${data.name}`}
-            onError={(e) => (e.currentTarget.src = '/avatar.svg')}
-          />
-        </div>
-
-        <div className="flex justify-between w-[48rem] items-start">
-          <div className="flex flex-row gap-6">
-            {data.genre.map((genre: string) => (
-              <div
-                key={genre}
-                className="bg-gray-300 border-red rounded-md px-2 py-1"
-              >
-                <p>{genre}</p>
-              </div>
-            ))}
+      <div className="flex flex-col items-center py-10 backdrop-blur-md backdrop-brightness-90 hero">
+        <div className="border border-white shadow-xl shadow-black">
+          <div className="flex flex-col ">
+            <h1 className="text-2xl text-white font-semibold py-3 pl-3 bg-gradient-to-r from-stone-500 to-stone-800 ">
+              {data.name}
+            </h1>
+            <img
+              className="w-[48rem] h-auto"
+              src={data.imageUrl}
+              alt={`Photo of ${data.name}`}
+              onError={(e) => (e.currentTarget.src = '/avatar.svg')}
+            />
           </div>
-          {!isError &&
-          profile.games.some((game: GameCardsProps) => game.id === data.id) ? (
-            <div>
-              <p className="text-3xl">You already have this game</p>
+
+          <div className="flex justify-between w-[48rem] items-start px-3 py-3 items-center bg-gradient-to-r from-stone-500 to-stone-800">
+            <div className="flex flex-row gap-2 ">
+              {data.genre.map((genre: string) => (
+                <div
+                  key={genre}
+                  className=" border-red rounded-md px-2 py-1 bg-slate-900"
+                >
+                  <p className="text-white">{genre}</p>
+                </div>
+              ))}
             </div>
-          ) : (
-            <div className="flex flex-row gap-8 items-center">
-              <p className="text-3xl">{`$ ${data.price}`}</p>
-              <button
-                className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                onClick={purchaseButton}
-              >
-                Purchase
-              </button>
-            </div>
-          )}
+            {!isError &&
+            profile.games.some(
+              (game: GameCardsProps) => game.id === data.id,
+            ) ? (
+              <div>
+                <p className="text-3xl">You already have this game</p>
+              </div>
+            ) : (
+              <div className="flex flex-row gap-8 items-center">
+                <p className="text-3xl text-white">{`$ ${data.price}`}</p>
+                <button
+                  className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  onClick={purchaseButton}
+                >
+                  Purchase
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>
