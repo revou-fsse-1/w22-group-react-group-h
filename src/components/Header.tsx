@@ -34,10 +34,10 @@ export default function Header() {
                 <Link href="/community">Community</Link>
               </li>
               <li className="ml-14">
-                <a href="#">Event</a>
+                <a href="#">Guides</a>
               </li>
               <li className="mr-[150px] ml-14">
-                <a href="#">Chat</a>
+                <Link href="/chat">Chat</Link>
               </li>
 
               {profile ? (

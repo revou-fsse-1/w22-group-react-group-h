@@ -27,7 +27,7 @@ export default function Homepage() {
               down hordes of monsters with others.
             </p>
 
-            <Link href="/login">Login</Link>
+            <Link href="/games">Store</Link>
             <a
               href="https://www.youtube.com/watch?v=P2JnTforl_4&ab_channel=Fortnite"
               className="yutub"
