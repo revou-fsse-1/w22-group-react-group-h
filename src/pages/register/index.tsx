@@ -5,6 +5,7 @@ import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
 import Modal from 'react-modal';
+import { useState } from 'react';
 
 type InitialRegisterValues = {
   username: string;
@@ -169,6 +170,8 @@ export default function Register() {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Register Success Modal"
+        className="modal-content"
+        overlayClassName="modal-overlay"
       >
         <h2 className="text-2xl font-semibold mb-4">Register Success</h2>
         <p className="text-lg">You have successfully registered.</p>

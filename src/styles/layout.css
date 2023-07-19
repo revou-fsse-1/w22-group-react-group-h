@@ -152,3 +152,14 @@ nav ul li.btn:hover a {
 .fortnitewrap .fortniteimg {
   height: 100;
 }
+
+/* .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+} */
+
+.modal-content {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  max-width: 400px;
+}
