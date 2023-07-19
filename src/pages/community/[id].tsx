@@ -37,7 +37,7 @@ export default function GameDetail({
 
         <div className="pt-5 flex flex-col">
           <h1 className="text-white">Games Owned: {data.games.length}</h1>
-          <div className="pt-3 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-between">
+          <div className="pt-3 gap-x-5 gap-y-10 flex flex-wrap flex-row">
             {data.games.map((game: CommunityOwnedGameCardProps) => (
               <CommunityOwnedGameCard
                 key={game.id}

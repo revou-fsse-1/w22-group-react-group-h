@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
+import Head from 'next/head';
 
 export interface ChatProps {
   id: string;
@@ -88,41 +89,46 @@ export default function ChatTables() {
   console.log('reverse', chats.reverse());
 
   return (
-    <div className="hero backdrop-blur-md backdrop-brightness-90">
-      <div className="pb-5">
-        <Formik
-          initialValues={initialValues}
-          onSubmit={(values) => handleSubmit(values)}
-        >
-          <Form ref={formRef} className="flex flex-col gap-1 ">
-            <label
-              htmlFor="chat"
-              className="text-xl font-bold text-white px-5 pt-2"
-            >
-              Chat - Ask - Meet - Play
-            </label>
-            <div className="px-2">
-              <Field
-                name="chat"
-                type="text"
-                className="px-3 py-2 rounded-lg border-2 border-gray-300 w-[500px]"
-              />
-              <button
-                className="border border-black rounded-lg bg-white px-3 py-3 ml-3"
-                type="submit"
+    <>
+      <Head>
+        <title>Chat | Apikgems </title>
+      </Head>
+      <div className="hero backdrop-blur-md backdrop-brightness-90">
+        <div className="pb-5">
+          <Formik
+            initialValues={initialValues}
+            onSubmit={(values) => handleSubmit(values)}
+          >
+            <Form ref={formRef} className="flex flex-col gap-1 ">
+              <label
+                htmlFor="chat"
+                className="text-xl font-bold text-white px-5 pt-2"
               >
-                Enter
-              </button>
-            </div>
-          </Form>
-        </Formik>
-      </div>
-      {chats.reverse().map((chat) => (
-        <div key={chat.id} className="flex flex-row gap-8 px-3">
-          <p>{transformTime(chat.createdAt)}</p>
-          <p className="mb-5">{chat.chat}</p>
+                Chat - Ask - Meet - Play
+              </label>
+              <div className="px-2">
+                <Field
+                  name="chat"
+                  type="text"
+                  className="px-3 py-2 rounded-lg border-2 border-gray-300 w-[500px]"
+                />
+                <button
+                  className="border border-black rounded-lg bg-white px-3 py-3 ml-3"
+                  type="submit"
+                >
+                  Enter
+                </button>
+              </div>
+            </Form>
+          </Formik>
         </div>
-      ))}
-    </div>
+        {chats.reverse().map((chat) => (
+          <div key={chat.id} className="flex flex-row gap-8 px-3">
+            <p>{transformTime(chat.createdAt)}</p>
+            <p className="mb-5">{chat.chat}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
