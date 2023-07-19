@@ -30,7 +30,7 @@ export default function Header() {
             },
           },
         );
-        console.log('sdhaushdusiah', response.data);
+        console.log('fetch header', response.data);
         const user = response.data;
         // const fetchedUsername = user.username;
         setProfile({

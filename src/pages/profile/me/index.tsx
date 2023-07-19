@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useProfile } from '@/hooks/useProfile';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { ProfileImage } from '@/components/PorfileImage';
 
 interface IFormInput {
   username: String;
@@ -50,16 +51,16 @@ export default function MyProfile() {
 
       <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
         <div className="flex w-full gap-8">
-          <Image
-            src="/profile-picture.jpg"
-            alt="profile picture"
-            height={240}
-            width={240}
-          ></Image>
+          <ProfileImage userId={data.id} />
           <div>
             <p className=" text-3xl font-medium">{data.username}</p>
             <p className=" pb-24 text-m">{data.name}</p>
-            <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <button
+              className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              onClick={() => {
+                router.push('/profile/me/edit', undefined, { shallow: true });
+              }}
+            >
               Edit Profile
             </button>
           </div>
