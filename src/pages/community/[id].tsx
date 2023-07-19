@@ -21,7 +21,7 @@ export default function GameDetail({
         <title>Community | Apikgems </title>
       </Head>
 
-      <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
+      <div className="px-10 py-10 flex flex-col justify-center items-center backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
         <div className="flex w-full gap-8">
           <Image
             src="/profile-picture.jpg"
@@ -30,14 +30,16 @@ export default function GameDetail({
             width={240}
           ></Image>
           <div>
-            <p className=" text-3xl font-medium">{data.username}</p>
-            <p className=" pb-24 text-m">{data.name}</p>
+            <p className=" text-3xl font-medium pb-2">{data.username}</p>
+            <p className=" text-m">{data.name}</p>
           </div>
         </div>
 
-        <div className="pt-5 flex flex-col">
-          <h1 className="text-white">Games Owned: {data.games.length}</h1>
-          <div className="pt-3 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-between">
+        <div className="pt-5">
+          <h1 className="text-white text-lg">
+            Games Owned: {data.games.length}
+          </h1>
+          <div className="pt-3 gap-x-5 gap-y-10 flex flex-wrap justify-between">
             {data.games.map((game: CommunityOwnedGameCardProps) => (
               <CommunityOwnedGameCard
                 key={game.id}
