@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
+import Modal from 'react-modal';
 
 type InitialRegisterValues = {
   username: string;
@@ -14,6 +15,7 @@ type InitialRegisterValues = {
 
 export default function Register() {
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const registerSchema = object({
     username: string()
@@ -50,10 +52,15 @@ export default function Register() {
         throw new Error(data.errors);
       }
 
-      router.push('/login');
+      setIsModalOpen(true);
     } catch (error: any) {
       console.log(error.toString());
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    router.push('/login');
   };
 
   return (
@@ -157,6 +164,21 @@ export default function Register() {
           </div>
         </div>
       </section>
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Register Success Modal"
+      >
+        <h2 className="text-2xl font-semibold mb-4">Register Success</h2>
+        <p className="text-lg">You have successfully registered.</p>
+        <button
+          className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+          onClick={closeModal}
+        >
+          Close
+        </button>
+      </Modal>
     </>
   );
 }
