@@ -80,10 +80,11 @@ export default function EditProfileForm(props: EditProfileFormProps) {
 
   return (
     <form onSubmit={onSubmit2}>
-      <div className="flex flex-col w-80">
+      <div className="flex flex-col w-80 pb-3">
         <label className="flex gap-8 justify-between mb-4">
-          <span>Username</span>
+          <span className='text-white'>Username</span>
           <input
+          className='px-3 py-1'
             {...register('username')}
             placeholder="username"
             value={formValues.username}
@@ -97,8 +98,9 @@ export default function EditProfileForm(props: EditProfileFormProps) {
         </label>
 
         <label className="flex gap-8 justify-between mb-4">
-          <span>Name</span>
+          <span className='text-white'>Name</span>
           <input
+          className='px-3 py-1'
             {...register('name')}
             placeholder="Name"
             value={formValues.name}
@@ -112,8 +114,9 @@ export default function EditProfileForm(props: EditProfileFormProps) {
         </label>
 
         <label className="flex gap-8 justify-between mb-4">
-          <span>Email</span>
+          <span className='text-white'>Email</span>
           <input
+          className='px-3 py-1'
             {...register('email')}
             placeholder="email@email.com"
             value={formValues.email}
@@ -126,7 +129,7 @@ export default function EditProfileForm(props: EditProfileFormProps) {
           />
         </label>
       </div>
-
+    
       <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-4">
         Save
       </button>
