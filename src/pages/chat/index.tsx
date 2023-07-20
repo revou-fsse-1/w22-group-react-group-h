@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import Head from 'next/head';
+import Header from '@/components/Header';
 
 export interface ChatProps {
   id: string;
@@ -93,6 +94,8 @@ export default function ChatTables() {
       <Head>
         <title>Chat | Apikgems </title>
       </Head>
+
+      <Header />
       <div className="hero backdrop-blur-md backdrop-brightness-90">
         <div className="pb-5">
           <Formik

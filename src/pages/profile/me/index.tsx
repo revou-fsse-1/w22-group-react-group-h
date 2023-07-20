@@ -10,6 +10,7 @@ import { useProfile } from '@/hooks/useProfile';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ProfileImage } from '@/components/PorfileImage';
+import Header from '@/components/Header';
 
 interface IFormInput {
   username: String;
@@ -49,6 +50,7 @@ export default function MyProfile() {
         <title>Profile | Apikgems </title>
       </Head>
 
+      <Header />
       <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
         <div className="flex w-full gap-8">
           <ProfileImage userId={data.id} />

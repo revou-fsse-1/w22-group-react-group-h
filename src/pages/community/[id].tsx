@@ -11,6 +11,7 @@ import { useProfile } from '@/hooks/useProfile';
 import { GameCardsProps } from '@/components/GameCards';
 import { CommunityOwnedGameCardProps } from '@/components/CommunityOwnedGameCard';
 import { CommunityOwnedGameCard } from '@/components/CommunityOwnedGameCard';
+import Header from '@/components/Header';
 
 export default function GameDetail({
   data,
@@ -21,6 +22,7 @@ export default function GameDetail({
         <title>Community | Apikgems </title>
       </Head>
 
+      <Header />
       <div className="px-10 py-10 flex flex-col justify-center items-center backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
         <div className="flex w-full gap-8">
           <Image

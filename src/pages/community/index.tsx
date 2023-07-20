@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { UserCardsProps } from '@/components/UserCards';
 import { UserCards } from '@/components/UserCards';
 import Head from 'next/head';
+import Header from '@/components/Header';
 
 export default function GameTables() {
   const navigate = useRouter();
@@ -33,6 +34,8 @@ export default function GameTables() {
       <Head>
         <title>Community | Apikgems </title>
       </Head>
+
+      <Header />
       <Link href="/">
         <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero">
           <div className="pt-6 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-evenly">

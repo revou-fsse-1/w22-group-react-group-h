@@ -13,6 +13,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { ProfileImage } from '@/components/PorfileImage';
 import { EditAvatar } from '@/components/EditAvatar';
 import EditProfileForm from '@/components/EditProfileForm';
+import Header from '@/components/Header';
 
 export default function EditProfile() {
   // const { register, handleSubmit, setValue } = useForm<IFormInput>();
@@ -51,6 +52,7 @@ export default function EditProfile() {
         <title>Edit Profile | Apikgems </title>
       </Head>
 
+      <Header />
       <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
         <div className="flex flex-col w-full gap-8">
           <div className="flex gap-8">

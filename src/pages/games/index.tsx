@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { GameCardsProps } from '@/components/GameCards';
 import { GameSearchBar } from '@/components/SearchBar';
 import Head from 'next/head';
+import Header from '@/components/Header';
 
 // export type GameType = {
 //   id: string;
@@ -48,6 +49,8 @@ export default function GameTables() {
       <Head>
         <title>Games | Apikgems </title>
       </Head>
+
+      <Header />
       <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero">
         <div className="pb-8">
           <p className="pb-2 text-white">Featured & Recommended</p>
