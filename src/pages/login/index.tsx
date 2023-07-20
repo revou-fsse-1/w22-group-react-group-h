@@ -116,25 +116,22 @@ export default function Login() {
       </section>
 
       {/* Login Success Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Login Success Modal"
-        className="modal-content"
-        overlayClassName="modal-overlay"
-      >
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-md shadow-md z-10">
-          <h2 className="text-2xl font-semibold mb-4">Login Success</h2>
-          <p className="text-lg">You have successfully logged in.</p>
-          <button
-            className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
-            onClick={closeModal}
-          >
-            Close
-          </button>
+      {isModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
+          <div className="absolute inset-0 bg-black opacity-50" />
+
+          <div className="relative bg-white p-6 rounded-md shadow-md z-10">
+            <h2 className="text-2xl font-semibold mb-4">Login Success</h2>
+            <p className="text-lg">You have successfully logged in.</p>
+            <button
+              className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+              onClick={closeModal}
+            >
+              Close
+            </button>
+          </div>
         </div>
-        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10" />
-      </Modal>
+      )}
     </>
   );
 }
