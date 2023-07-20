@@ -6,7 +6,6 @@ import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
 import Modal from 'react-modal';
-import { useState } from 'react';
 import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
 import Header from '@/components/Header';
 
@@ -126,7 +125,7 @@ export default function Login() {
               <div className="flex flex-col mt-3">
                 <button
                   type="submit"
-                  className="px-4 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+                  className="px-4 py-3 rounded-lg text-white text-lg font-semibold bg-[#19222E] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
                   Login
                 </button>
@@ -152,7 +151,7 @@ export default function Login() {
             <h2 className="text-2xl font-semibold mb-4">Login Success</h2>
             <p className="text-lg">You have successfully logged in.</p>
             <button
-              className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+              className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               onClick={closeModal}
             >
               Close
