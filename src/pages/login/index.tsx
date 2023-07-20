@@ -6,6 +6,10 @@ import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
 import Modal from 'react-modal';
+import { useState } from 'react';
+import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
+import Header from '@/components/Header';
+
 
 type InitialLoginValues = {
   username: string;
@@ -15,6 +19,14 @@ type InitialLoginValues = {
 export default function Login() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loggedUserId, setloggedUserId] = useLocalStorageNew(
+    'loggedUserId',
+    '',
+  );
+  const [loggedUsername, setloggedUsername] = useLocalStorageNew(
+    'loggedUsername',
+    '',
+  );
 
   const loginSchema = object({
     username: string().required('Username required'),
@@ -35,7 +47,21 @@ export default function Login() {
         throw new Error(data.errors);
       }
 
+      // get userId then store in local storage
+      const resGetUser = await axios.get(
+        'https://apikgems.cobainweb.site/api/users/me',
+        {
+          headers: {
+            Authorization: `Bearer ${data.accessToken}`,
+          },
+        },
+      );
+      const userData = resGetUser.data;
+
       localStorage.setItem('token', data.accessToken);
+      setloggedUserId(userData.id);
+      setloggedUsername(userData.username);
+
       setIsModalOpen(true);
     } catch (error: any) {
       console.log(error.toString());
@@ -52,6 +78,8 @@ export default function Login() {
       <Head>
         <title>Login | Apikgems </title>
       </Head>
+
+      <Header />
       <section className="flex flex-col items-center">
         <div className="w-3/5 min-w-fit max-w-lg flex flex-col items-center gap-6 py-8 px-4 rounded-[2rem] bg-slate-50">
           <h2 className="text-4xl font-semibold">Login</h2>

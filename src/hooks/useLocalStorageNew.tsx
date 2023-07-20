@@ -2,8 +2,12 @@ import { useState } from 'react';
 
 export const useLocalStorageNew = (key: string, initialValue: any) => {
   const [storedValue, setStoredValue] = useState(() => {
-    const item = localStorage.getItem(key);
-    return item ? item : initialValue;
+    try {
+      const item = localStorage.getItem(key);
+      return item ? item : initialValue;
+    } catch {
+      return initialValue;
+    }
   });
 
   const setValue = (value: any) => {

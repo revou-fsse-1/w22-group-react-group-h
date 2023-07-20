@@ -13,6 +13,7 @@ export default function Homepage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header />
       <section className="hero">
         <div className="content">
           <div className="main-text">

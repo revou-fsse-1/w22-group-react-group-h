@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
 import axios from 'axios';
 import { TopupBalance } from '@/components/TopupBalance';
+import Header from '@/components/Header';
 
-export default function wallet() {
+export default function Wallet() {
   const router = useRouter();
 
   async function fetcher(url: string) {
@@ -38,6 +39,7 @@ export default function wallet() {
 
   return (
     <>
+      <Header />
       <TopupBalance userId={data.id} />
       {/* <h1> Your Balance: $1000</h1>
       <div>

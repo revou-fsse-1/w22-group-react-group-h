@@ -3,50 +3,32 @@ import { useEffect, useState } from 'react';
 import { useProfile } from '@/hooks/useProfile';
 import Image from 'next/image';
 import axios from 'axios';
+import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
+import ProfieButton from './ProfileButton';
 
 export default function Header() {
-  // const [isLogin, setisLogin] = useState(false);
+  const [loggedUserId, setloggedUserId] = useLocalStorageNew(
+    'loggedUserId',
+    '',
+  );
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     setisLogin(true);
-  //   }
-  // }, []);
+  const [loggedUsername, setloggedUsername] = useLocalStorageNew(
+    'loggedUsername',
+    '',
+  );
 
-  const [profile, setProfile] = useState({
-    id: '',
-    username: '',
-  });
+  const [balance, setBalance] = useLocalStorageNew(
+    `${loggedUserId}|ballance`,
+    0,
+  );
+
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    const fetchUsername = async () => {
-      try {
-        const response = await axios.get(
-          'https://apikgems.cobainweb.site/api/users/me',
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-          },
-        );
-        console.log('fetch header', response.data);
-        const user = response.data;
-        // const fetchedUsername = user.username;
-        setProfile({
-          id: user.id,
-          username: user.username,
-        });
-        // localStorage.setItem('username', fetchedUsername);
-      } catch (error) {
-        // Handle error
-      }
-    };
-
-    fetchUsername();
+    if (loggedUsername !== '') {
+      setLoggedIn(true);
+    }
   }, []);
-
-  //const { profile, isLoading, isError } = useProfile();
 
   return (
     <div className="layout-header">
@@ -57,43 +39,55 @@ export default function Header() {
               <Link href="/">ApikGems</Link>
             </h2>
           </div>
-
-          <nav>
-            <ul>
-              <li>
-                <Link href="/games">Games</Link>
-              </li>
-              <li className="ml-14">
-                <Link href="/community">Community</Link>
-              </li>
-              <li className="ml-14">
-                <a href="#">Guides</a>
-              </li>
-              <li className="mr-[150px] ml-14">
-                <Link href="/chat">Chat</Link>
-              </li>
-
-              {profile ? (
+          <div className="flex flex-row items-center">
+            <nav>
+              <ul>
                 <li>
-                  <Link href="/profile/me">
-                    <div className="flex flex-col items-center">
-                      <Image
-                        src="/profile-picture.jpg"
-                        alt="profile picture"
-                        height={24}
-                        width={24}
-                      ></Image>
-                      <p>{profile.username}</p>
-                    </div>
-                  </Link>
+                  <Link href="/games">Games</Link>
+                </li>
+                <li className="ml-14">
+                  <Link href="/community">Community</Link>
+                </li>
+                <li className="ml-14">
+                  <a href="#">Guides</a>
+                </li>
+                <li className="mr-[150px] ml-14">
+                  <Link href="/chat">Chat</Link>
+                </li>
+              </ul>
+            </nav>
+
+            {/* {loggedIn ? (
+                <li>
+                  <div className="flex flex-row gap-8 items-center">
+                    <Link href="/wallet">
+                      <div>${balance}</div>
+                    </Link>
+                    <Link href="/profile/me">
+                      <div className="flex flex-col items-center">
+                        <Image
+                          src="/profile-picture.jpg"
+                          alt="profile picture"
+                          height={24}
+                          width={24}
+                        ></Image>
+                        <div>{loggedUsername}</div>
+                      </div>
+                    </Link>
+                  </div>
                 </li>
               ) : (
                 <li className="btn">
                   <Link href="/login">Login</Link>
                 </li>
-              )}
-            </ul>
-          </nav>
+              )} */}
+            <ProfieButton
+              loggedIn={loggedIn}
+              loggedUserId={loggedUserId}
+              loggedUsername={loggedUsername}
+              balance={balance}
+            />
+          </div>
         </header>
       </div>
     </div>
