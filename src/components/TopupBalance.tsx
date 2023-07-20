@@ -10,13 +10,14 @@ export function TopupBalance(props: TopupBalanceProps) {
     0,
   );
   return (
-    <>
-      <h1>{props.userId}</h1>
-      <h1> Your Balance: ${balance}</h1>
+    <div className='hero backdrop-blur-md backdrop-brightness-90 divide-y px-3 py-3'>
+      <h1 className='text-xl font-bold text-white pb-2'>Hello! {props.userId}</h1>
+      <h1 className='text-mds font-medium text-white py-2'> Your Balance: ${balance}</h1>
       <div>
-        <h1>Top Up!</h1>
+        <h1 className='pt-2 pb-3 text-white'>Top Up Here!</h1>
+        <div className='flex flex-row gap-5'>
         <button
-          className="border-2"
+          className="border border-white py-3 px-5 text-white bg-gradient-to-r from-stone-500 to-stone-800"
           onClick={() => {
             setBalance(parseInt(balance) + 15);
           }}
@@ -24,7 +25,7 @@ export function TopupBalance(props: TopupBalanceProps) {
           $15
         </button>
         <button
-          className="border-2"
+          className="border border-white py-3 px-5 text-white bg-gradient-to-r from-stone-500 to-stone-800"
           onClick={() => {
             setBalance(parseInt(balance) + 50);
           }}
@@ -32,7 +33,7 @@ export function TopupBalance(props: TopupBalanceProps) {
           $50
         </button>
         <button
-          className="border-2"
+          className="border border-white py-3 px-5 text-white bg-gradient-to-r from-stone-500 to-stone-800"
           onClick={() => {
             setBalance(parseInt(balance) + 100);
           }}
@@ -40,7 +41,7 @@ export function TopupBalance(props: TopupBalanceProps) {
           $100
         </button>
         <button
-          className="border-2"
+          className="border border-white py-3 px-5 text-white bg-gradient-to-r from-stone-500 to-stone-800"
           onClick={() => {
             setBalance(parseInt(balance) + 200);
           }}
@@ -48,7 +49,7 @@ export function TopupBalance(props: TopupBalanceProps) {
           $200
         </button>
         <button
-          className="border-2"
+          className="border border-white py-3 px-5 text-white bg-gradient-to-r from-stone-500 to-stone-800"
           onClick={() => {
             setBalance(parseInt(balance) + 500);
           }}
@@ -56,7 +57,7 @@ export function TopupBalance(props: TopupBalanceProps) {
           $500
         </button>
         <button
-          className="border-2"
+          className="border border-white py-3 px-5 text-white bg-gradient-to-r from-stone-500 to-stone-800"
           onClick={() => {
             setBalance(parseInt(balance) + 1000);
           }}
@@ -64,6 +65,7 @@ export function TopupBalance(props: TopupBalanceProps) {
           $1000
         </button>
       </div>
-    </>
+      </div>
+    </div>
   );
 }

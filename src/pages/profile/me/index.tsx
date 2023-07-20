@@ -53,21 +53,19 @@ export default function MyProfile() {
             <div className="flex w-full gap-8">
               <ProfileImage userId={data.id} />
               <div>
-                <p className=" text-3xl font-medium">{data.username}</p>
-                <p className=" pb-24 text-m">{data.name}</p>
+                <p className=" text-3xl font-medium pb-2 text-white">{data.username}</p>
+                <p className=" pb-24 text-m text-white">{data.name}</p>
                 <button
                   className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   onClick={() => {
-                    router.push('/profile/me/edit', undefined, {
-                      shallow: true,
-                    });
+                    router.push('/profile/me/edit', undefined, { shallow: true });
                   }}
                 >
                   Edit Profile
                 </button>
               </div>
             </div>
-
+            
             <div className="pt-5 flex flex-col">
               <h1 className="text-white">Games Owned: {data.games.length}</h1>
               <div className="pt-3 gap-x-5 gap-y-10 flex flex-wrap flex-row justify-between">

@@ -25,8 +25,8 @@ export function EditAvatar(props: EditAvatarProps) {
       ></Image>
 
       <div>
-        AVATAR
-        <div className="flex flex-row">
+        <p className='text-white pb-3'>AVATAR</p>
+        <div className="flex flex-row gap-3">
           {storedAvatars.map((ava) => (
             <button
               key={ava}
@@ -36,6 +36,7 @@ export function EditAvatar(props: EditAvatarProps) {
               }}
             >
               <Image
+                className='border border-white'
                 src={`/avatar-${ava}.jpg`}
                 alt="Button Image"
                 height={128}
