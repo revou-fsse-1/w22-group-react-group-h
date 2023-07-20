@@ -1,11 +1,11 @@
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
 import Modal from 'react-modal';
-import { useState } from 'react';
 
 type InitialLoginValues = {
   username: string;
@@ -18,9 +18,7 @@ export default function Login() {
 
   const loginSchema = object({
     username: string().required('Username required'),
-    password: string()
-      .min(5, 'Password too short')
-      .required('Password required'),
+    password: string().min(5, 'Password too short').required('Password required'),
   });
 
   const initialValues: InitialLoginValues = { username: '', password: '' };
@@ -29,7 +27,7 @@ export default function Login() {
     try {
       const res = await axios.post(
         'https://apikgems.cobainweb.site/api/auth/login',
-        values,
+        values
       );
       const data = res.data;
 
@@ -69,7 +67,7 @@ export default function Login() {
                 </label>
                 <Field
                   name="username"
-                  type="username"
+                  type="text"
                   placeholder="username"
                   className="px-3 py-2 rounded-lg border-2 border-gray-300"
                 />
@@ -110,13 +108,14 @@ export default function Login() {
 
           <div className="flex flex-col items-center">
             <p>Don&apos;t have an account?</p>
-            <Link href={'/register'}>
+            <Link href="/register">
               <span className="text-lg text-sky-600">Sign Up</span>
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Login Success Modal */}
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -124,14 +123,17 @@ export default function Login() {
         className="modal-content"
         overlayClassName="modal-overlay"
       >
-        <h2 className="text-2xl font-semibold mb-4">Login Success</h2>
-        <p className="text-lg">You have successfully logged in.</p>
-        <button
-          className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
-          onClick={closeModal}
-        >
-          Close
-        </button>
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-md shadow-md z-10">
+          <h2 className="text-2xl font-semibold mb-4">Login Success</h2>
+          <p className="text-lg">You have successfully logged in.</p>
+          <button
+            className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+            onClick={closeModal}
+          >
+            Close
+          </button>
+        </div>
+        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-10" />
       </Modal>
     </>
   );
