@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -5,7 +6,6 @@ import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
 import Modal from 'react-modal';
-import { useState } from 'react';
 
 type InitialRegisterValues = {
   username: string;
@@ -173,14 +173,20 @@ export default function Register() {
         className="modal-content"
         overlayClassName="modal-overlay"
       >
-        <h2 className="text-2xl font-semibold mb-4">Register Success</h2>
-        <p className="text-lg">You have successfully registered.</p>
-        <button
-          className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
-          onClick={closeModal}
-        >
-          Close
-        </button>
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
+          <div className="absolute inset-0 bg-black opacity-50" />
+
+          <div className="relative bg-white p-6 rounded-md shadow-md z-10">
+            <h2 className="text-2xl font-semibold mb-4">Register Success</h2>
+            <p className="text-lg">You have successfully registered.</p>
+            <button
+              className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+              onClick={closeModal}
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </Modal>
     </>
   );
