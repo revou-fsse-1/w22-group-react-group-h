@@ -23,11 +23,6 @@ export default function Wallet() {
     fetcher,
   );
 
-  //const [balance, setBalance] = useLocalStorageNew('balance', 0);
-
-  //const router = useRouter();
-  // const [amount, setAmount] = useState(0);
-
   if (error) {
     return <div>Error fetching data</div>;
   }
@@ -35,29 +30,10 @@ export default function Wallet() {
     return <div>Loading...</div>;
   }
 
-  console.log('yoy');
-
   return (
     <>
       <Header />
-      <TopupBalance userId={data.id} />
-      {/* <h1> Your Balance: $1000</h1>
-      <div>
-        <h1>Top Up!</h1>
-        <button
-          className="border-2"
-          onClick={() => {
-            setBalance(balance + 15);
-          }}
-        >
-          $15
-        </button>
-        <button className="border-2">$50</button>
-        <button className="border-2">$100</button>
-        <button className="border-2">$200</button>
-        <button className="border-2">$500</button>
-        <button className="border-2">$1000</button>
-      </div> */}
+      <TopupBalance userId={data.id} username={data.username} />
     </>
   );
 }

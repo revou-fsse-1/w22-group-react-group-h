@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
 
 type EditProfileFormProps = {
   userId: string;
@@ -19,6 +20,10 @@ interface IFormInput {
 export default function EditProfileForm(props: EditProfileFormProps) {
   const router = useRouter();
   const { register, handleSubmit, setValue } = useForm<IFormInput>();
+  const [loggedUsername, setloggedUsername] = useLocalStorageNew(
+    'loggedUsername',
+    '',
+  );
 
   const [formValues, setFormValues] = useState<IFormInput>({
     username: '',
@@ -62,7 +67,6 @@ export default function EditProfileForm(props: EditProfileFormProps) {
     e.preventDefault();
 
     try {
-      console.log('editdata', formValues);
       await axios.put(
         `https://apikgems.cobainweb.site/api/users/me`,
         { ...formValues },
@@ -72,6 +76,7 @@ export default function EditProfileForm(props: EditProfileFormProps) {
           },
         },
       );
+      setloggedUsername(formValues.username);
       router.push('/profile/me');
     } catch (error: any) {
       console.error('Error updating data:', error);
@@ -81,10 +86,10 @@ export default function EditProfileForm(props: EditProfileFormProps) {
   return (
     <form onSubmit={onSubmit}>
       <div className="flex flex-col w-80 pb-3">
-        <label className="flex gap-8 justify-between mb-4">
-          <span className='text-white'>Username</span>
+        <label className="flex gap-2 justify-between mb-4">
+          <span className="text-white">Username</span>
           <input
-          className='px-3 py-1'
+            className="px-3 py-1"
             {...register('username')}
             placeholder="username"
             value={formValues.username}
@@ -97,10 +102,10 @@ export default function EditProfileForm(props: EditProfileFormProps) {
           />
         </label>
 
-        <label className="flex gap-8 justify-between mb-4">
-          <span className='text-white'>Name</span>
+        <label className="flex gap-2 justify-between mb-4">
+          <span className="text-white">Name</span>
           <input
-          className='px-3 py-1'
+            className="px-3 py-1"
             {...register('name')}
             placeholder="Name"
             value={formValues.name}
@@ -113,10 +118,10 @@ export default function EditProfileForm(props: EditProfileFormProps) {
           />
         </label>
 
-        <label className="flex gap-8 justify-between mb-4">
-          <span className='text-white'>Email</span>
+        <label className="flex gap-2 justify-between mb-4">
+          <span className="text-white">Email</span>
           <input
-          className='px-3 py-1'
+            className="px-3 py-1"
             {...register('email')}
             placeholder="email@email.com"
             value={formValues.email}
@@ -129,13 +134,13 @@ export default function EditProfileForm(props: EditProfileFormProps) {
           />
         </label>
       </div>
-    
+
       <button className="rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mr-4">
         Save
       </button>
 
       <button
-        className="rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+        className="rounded-md border border-transparent bg-[#b81a1a] px-8 py-3 text-base font-medium text-white hover:bg-[#d41e1e] focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
         type="button"
         onClick={() => {
           router.back();
