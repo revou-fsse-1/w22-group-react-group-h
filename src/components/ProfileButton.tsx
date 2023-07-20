@@ -23,7 +23,7 @@ export default function ProfieButton(props: ProfileButtonProps) {
   //   );
 
   //   const [balance, setBalance] = useLocalStorageNew(
-  //     `${loggedUserId}|ballance`,
+  //     `${loggedUserId}|balance`,
   //     0,
   //   );
 

@@ -5,10 +5,7 @@ import {
 } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import axios from 'axios';
-import { useProfile } from '@/hooks/useProfile';
-import { GameCardsProps } from '@/components/GameCards';
 import { CommunityOwnedGameCardProps } from '@/components/CommunityOwnedGameCard';
 import { CommunityOwnedGameCard } from '@/components/CommunityOwnedGameCard';
 import Header from '@/components/Header';

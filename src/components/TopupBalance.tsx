@@ -6,7 +6,7 @@ type TopupBalanceProps = {
 
 export function TopupBalance(props: TopupBalanceProps) {
   const [balance, setBalance] = useLocalStorageNew(
-    `${props.userId}|ballance`,
+    `${props.userId}|balance`,
     0,
   );
   return (

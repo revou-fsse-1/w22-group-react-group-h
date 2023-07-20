@@ -38,27 +38,27 @@ export default function EditProfileForm(props: EditProfileFormProps) {
   //setValue('name', props.name);
   //setValue('email', props.email);
 
-  async function onSubmit(formData: IFormInput) {
-    try {
-      console.log('editdata', formData);
-      await axios.put(
-        `https://apikgems.cobainweb.site/api/users/me`,
-        {
-          ...formData,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        },
-      );
-      router.back();
-    } catch (error: any) {
-      console.error('Error updating data:', error);
-    }
-  }
+  // async function onSubmit(formData: IFormInput) {
+  //   try {
+  //     console.log('editdata', formData);
+  //     await axios.put(
+  //       `https://apikgems.cobainweb.site/api/users/me`,
+  //       {
+  //         ...formData,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //         },
+  //       },
+  //     );
+  //     router.back();
+  //   } catch (error: any) {
+  //     console.error('Error updating data:', error);
+  //   }
+  // }
 
-  const onSubmit2 = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -79,7 +79,7 @@ export default function EditProfileForm(props: EditProfileFormProps) {
   };
 
   return (
-    <form onSubmit={onSubmit2}>
+    <form onSubmit={onSubmit}>
       <div className="flex flex-col w-80 pb-3">
         <label className="flex gap-8 justify-between mb-4">
           <span className='text-white'>Username</span>
