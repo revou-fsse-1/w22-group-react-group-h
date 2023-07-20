@@ -18,7 +18,7 @@ export default function Header() {
   );
 
   const [balance, setBalance] = useLocalStorageNew(
-    `${loggedUserId}|ballance`,
+    `${loggedUserId}|balance`,
     0,
   );
 

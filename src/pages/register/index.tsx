@@ -6,7 +6,6 @@ import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
 import Modal from 'react-modal';
-import { useState } from 'react';
 import Header from '@/components/Header';
 
 type InitialRegisterValues = {

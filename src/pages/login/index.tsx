@@ -6,10 +6,8 @@ import { object, string } from 'yup';
 import axios from 'axios';
 import Head from 'next/head';
 import Modal from 'react-modal';
-import { useState } from 'react';
 import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
 import Header from '@/components/Header';
-
 
 type InitialLoginValues = {
   username: string;
@@ -30,7 +28,9 @@ export default function Login() {
 
   const loginSchema = object({
     username: string().required('Username required'),
-    password: string().min(5, 'Password too short').required('Password required'),
+    password: string()
+      .min(5, 'Password too short')
+      .required('Password required'),
   });
 
   const initialValues: InitialLoginValues = { username: '', password: '' };
@@ -39,7 +39,7 @@ export default function Login() {
     try {
       const res = await axios.post(
         'https://apikgems.cobainweb.site/api/auth/login',
-        values
+        values,
       );
       const data = res.data;
 
@@ -148,11 +148,11 @@ export default function Login() {
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-50">
           <div className="absolute inset-0 bg-black opacity-50" />
 
-          <div className="relative bg-white p-6 rounded-md shadow-md z-10">
+          <div className="relative bg-white p-6 rounded-md shadow-md z-10 flex flex-col">
             <h2 className="text-2xl font-semibold mb-4">Login Success</h2>
             <p className="text-lg">You have successfully logged in.</p>
             <button
-              className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E]"
+              className="px-4 py-2 mt-4 rounded-lg text-white text-lg font-semibold bg-[#19222E] self-end"
               onClick={closeModal}
             >
               Close
