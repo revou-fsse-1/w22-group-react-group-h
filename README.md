@@ -1,19 +1,26 @@
 # Apikgems
 
+## Week 22 Group Project Team H
+> Apikgems is Game Launcher base in Indonesia, that gives the chance for indie indonesia game developer to deploy their game.
+
 ## Team
 
 | Name           | Role                   |
 | :------------- | :--------------------- |
 | Indra Setiadhi | Software Engineer      |
-| Gary Cruise    | Software Engineer |
+| Gary Cruise    | Software Engineer      |
 
 ## Pages
 
 - Login
 - Register
 - Home
+- Store
 - Detail Game
+- Community
+- Detail Community
 - Profile
+- Chat
 
 ## App Flow
 
@@ -35,27 +42,32 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Endpoints
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**Authentication**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+| Method | Endpoint             | Description         | Auth |
+| :----- | :------------------- | :------------------ | ---- |
+| 'POST' | '/api/auth/register' | Register a new user |      |
+| 'POST' | '/api/auth/login'    | Login user          |      |
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Users**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Method   | Endpoint              | Description              | Auth |
+| :------- | :-------------------- | :----------------------- | ---- |
+| 'GET'    | '/api/users'          | Get all users            |      |
+| 'GET'    | '/api/users/{id}'     | Get user by id           |      |
+| 'GET'    | '/api/users/me'       | Get my account           | 🔑   |
+| 'PUT'    | '/api/users/me'       | Update my account        | 🔑   |
+| 'DELETE' | '/api/users/me'       | Delete my account        | 🔑   |
+| 'POST'   | '/api/users/me/games' | Add game to user account | 🔑   |
 
-## Learn More
+**Games**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Method   | Endpoint          | Description       | Auth |
+| :------- | :---------------- | :---------------- | ---- |
+| 'GET'    | '/api/games       | Get all games     |      |
+| 'GET'    | '/api/games/{id}' | Get game by id    |      |
+| 'POST'   | '/api/games       | Create a game     | ⚿    |
+| 'PUT'    | '/api/games/{id}' | Update game by id | ⚿    |
+| 'DELETE' | '/api/games/{id}' | Delete game by id | ⚿    |

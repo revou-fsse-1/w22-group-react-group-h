@@ -36,7 +36,6 @@ export default function EditProfile() {
   }
 
   const handleAvatarChange = (avatar: string | null) => {
-    // Handle the selected avatar in the parent component, e.g., update state or perform other actions
     console.log('Selected avatar:', avatar);
   };
 
