@@ -6,7 +6,11 @@ import axios from 'axios';
 import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
 import ProfieButton from './ProfileButton';
 
-export default function Header() {
+type HeaderProps = {
+  avatar: string | null; // Add the avatar prop here
+};
+
+export default function Header(props: HeaderProps) {
   const [loggedUserId, setloggedUserId] = useLocalStorageNew(
     'loggedUserId',
     '',
@@ -86,6 +90,7 @@ export default function Header() {
               loggedUserId={loggedUserId}
               loggedUsername={loggedUsername}
               balance={balance}
+              avatar={props.avatar}
             />
           </div>
         </header>
