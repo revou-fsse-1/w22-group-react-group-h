@@ -43,7 +43,7 @@ export default function GameTables() {
               <UserCards
                 key={user.id}
                 id={user.id}
-                // imageUrl={user.imageUrl}
+                avatar={user.avatar}
                 username={user.username}
               />
             ))}

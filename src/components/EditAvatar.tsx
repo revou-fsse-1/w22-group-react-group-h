@@ -18,7 +18,7 @@ export function EditAvatar(props: EditAvatarProps) {
 
   const handleAvatarChange = (avatar: string) => {
     setAvatar(avatar);
-    props.onAvatarChange(avatar); // Pass the selected avatar to the parent component
+    props.onAvatarChange(avatar); 
   };
 
   return (

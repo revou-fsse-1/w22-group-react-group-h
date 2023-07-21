@@ -35,13 +35,18 @@ export default function EditProfile() {
     return <Loading />;
   }
 
+  const handleAvatarChange = (avatar: string | null) => {
+    // Handle the selected avatar in the parent component, e.g., update state or perform other actions
+    console.log('Selected avatar:', avatar);
+  };
+
   return (
     <>
       <Head>
         <title>Edit Profile | Apikgems </title>
       </Head>
 
-      <Header />
+      <Header avatar={data.avatar}/>
       <div className="grow px-10 py-10 mx-auto flex flex-col justify-center items-center place-content-start backdrop-blur-md backdrop-brightness-90 hero gap-5 divide-y">
         <div className="flex flex-col w-full gap-8">
           <div className="flex gap-8">
@@ -51,7 +56,8 @@ export default function EditProfile() {
               name={data.name}
               email={data.email}
             />
-            <EditAvatar userId={data.id} />
+            <EditAvatar userId={data.id} onAvatarChange={handleAvatarChange} />
+
           </div>
         </div>
       </div>
