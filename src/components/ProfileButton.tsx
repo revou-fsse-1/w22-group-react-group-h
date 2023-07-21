@@ -4,12 +4,14 @@ import { useProfile } from '@/hooks/useProfile';
 import Image from 'next/image';
 import axios from 'axios';
 import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
+import React from 'react';
 
 type ProfileButtonProps = {
   loggedIn: boolean;
   loggedUserId: string;
   loggedUsername: string;
   balance: number | string;
+  avatar: string | null; 
 };
 export default function ProfieButton(props: ProfileButtonProps) {
   //   const [loggedUserId, setloggedUserId] = useLocalStorageNew(
@@ -45,7 +47,9 @@ export default function ProfieButton(props: ProfileButtonProps) {
           <Link href="/profile/me">
             <div className="flex flex-col items-center">
               <Image
-                src="/profile-picture.jpg"
+                src={
+                  props.avatar ? `/avatar-${props.avatar}.jpg` : '/profile-picture.jpg'
+                }
                 alt="profile picture"
                 height={24}
                 width={24}
