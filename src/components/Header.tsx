@@ -7,7 +7,7 @@ import { useLocalStorageNew } from '@/hooks/useLocalStorageNew';
 import ProfieButton from './ProfileButton';
 
 type HeaderProps = {
-  avatar: string | null;
+  avatar?: string | null;
 };
 
 export default function Header(props: HeaderProps) {
@@ -27,7 +27,6 @@ export default function Header(props: HeaderProps) {
   );
 
   const [avatar, setAvatar] = useLocalStorageNew(`${loggedUserId}|avatar`, 'default');
-
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
